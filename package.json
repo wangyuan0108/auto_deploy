@@ -1,0 +1,36 @@
+{
+  "name": "deploy-auto",
+  "version": "1.0.4",
+  "description": "一个自动化部署的脚本",
+  "main": "./dist/lib.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangyuan0108/auto_deploy.git"
+  },
+  "author": "wangyuan0108",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wangyuan0108/auto_deploy/issues"
+  },
+  "homepage": "https://github.com/wangyuan0108/auto_deploy#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "compressing": "^1.5.1",
+    "inquirer": "^8.0.0",
+    "moment": "^2.29.1",
+    "node-ssh": "^11.1.1",
+    "ora": "^5.4.0",
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "node-loader": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0"
+  }
+}
