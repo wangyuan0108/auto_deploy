@@ -152,7 +152,7 @@ const runUploadTask = async () => {
 
   successLog('部署成功!');
   if (webHookUrl) {
-    sendMsg();
+    await sendMsg();
   }
 
   process.exit();
