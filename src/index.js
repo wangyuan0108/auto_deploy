@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-17 16:58:46
+ * @LastEditTime: 2021-09-17 17:41:22
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -15,7 +15,10 @@ const inquirer = require('inquirer');
 const compressing = require('compressing');
 const moment = require('moment');
 const axios = require('axios');
+const updateNotifier = require('update-notifier');
 
+const pkg = require('./package.json');
+updateNotifier({pkg}).notify();
 // const CONFIG = require("./deploy.conf");
 
 const SSH = new NodeSSH();
