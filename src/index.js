@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-17 17:45:42
+ * @LastEditTime: 2021-09-17 18:14:08
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -235,5 +235,4 @@ const run = (conf, path) => {
   workPath = path;
   initInquirer(conf);
 };
-
 module.exports = run;
