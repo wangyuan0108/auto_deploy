@@ -14,6 +14,8 @@ const shell = require('shelljs');
 const inquirer = require('inquirer');
 const compressing = require('compressing');
 const moment = require('moment');
+const axios = require('axios');
+
 // const CONFIG = require("./deploy.conf");
 
 const SSH = new NodeSSH();
