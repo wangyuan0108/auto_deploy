@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-17 17:41:22
+ * @LastEditTime: 2021-09-17 17:45:42
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -17,7 +17,7 @@ const moment = require('moment');
 const axios = require('axios');
 const updateNotifier = require('update-notifier');
 
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 updateNotifier({pkg}).notify();
 // const CONFIG = require("./deploy.conf");
 
