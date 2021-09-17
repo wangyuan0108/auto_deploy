@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-17 15:58:04
+ * @LastEditTime: 2021-09-17 16:58:46
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -151,7 +151,10 @@ const runUploadTask = async () => {
   await clearZipDist();
 
   successLog('部署成功!');
-  webHookUrl && sendMsg();
+  if (webHookUrl) {
+    sendMsg();
+  }
+
   process.exit();
 };
 async function sendMsg() {
@@ -211,8 +214,8 @@ async function initInquirer(conf) {
       })),
     },
   ]);
-  webHookUrl = conf.webHookUrl;
-  atMobiles = conf.atMobiles;
+  webHookUrl = conf.webHookUrl || '';
+  atMobiles = conf.atMobiles || [];
   config = conf.servers.find(server => data.env === server.name);
   if (config) {
     if (!config.password) {
