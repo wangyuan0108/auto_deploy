@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-18 11:04:57
+ * @LastEditTime: 2021-09-18 11:30:17
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -15,7 +15,9 @@ const inquirer = require('inquirer');
 const compressing = require('compressing');
 const moment = require('moment');
 const axios = require('axios');
+const argv = require('minimist')(process.argv.slice(2));
 
+console.log('argv', argv);
 // const CONFIG = require("./deploy.conf");
 
 const SSH = new NodeSSH();
@@ -23,6 +25,7 @@ let config;
 let workPath;
 let webHookUrl;
 let atMobiles = [];
+const build = argv.build || false;
 const defaultLog = log =>
   console.log(
     chalk.blue(
@@ -49,15 +52,19 @@ const successLog = log =>
   );
 
 const compileDist = async () => {
-  const loading = ora(defaultLog('项目开始打包')).start();
-  // shell.cd(path.resolve(__dirname, "../"));
-  const res = await shell.exec(`npm run ${config.script}`); //执行shell 打包命令
-  loading.clear();
-  if (res.code === 0) {
-    successLog('项目打包成功!');
+  if (build) {
+    const loading = ora(defaultLog('项目开始打包')).start();
+    // shell.cd(path.resolve(__dirname, "../"));
+    const res = await shell.exec(`npm run ${config.script}`); //执行shell 打包命令
+    loading.clear();
+    if (res.code === 0) {
+      successLog('项目打包成功!');
+    } else {
+      errorLog('项目打包失败, 请重试!');
+      process.exit(); //退出流程
+    }
   } else {
-    errorLog('项目打包失败, 请重试!');
-    process.exit(); //退出流程
+    successLog('项目已经打包,不需要再次打包!');
   }
 };
 
