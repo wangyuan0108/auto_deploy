@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-17 18:14:08
+ * @LastEditTime: 2021-09-18 09:24:25
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -19,6 +19,7 @@ const updateNotifier = require('update-notifier');
 
 const pkg = require('../package.json');
 updateNotifier({pkg}).notify();
+console.log(notifier.update);
 // const CONFIG = require("./deploy.conf");
 
 const SSH = new NodeSSH();
