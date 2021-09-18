@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-18 11:30:17
+ * @LastEditTime: 2021-09-18 11:48:07
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -17,7 +17,6 @@ const moment = require('moment');
 const axios = require('axios');
 const argv = require('minimist')(process.argv.slice(2));
 
-console.log('argv', argv);
 // const CONFIG = require("./deploy.conf");
 
 const SSH = new NodeSSH();
