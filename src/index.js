@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-18 10:37:29
+ * @LastEditTime: 2021-09-18 11:04:57
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -15,13 +15,7 @@ const inquirer = require('inquirer');
 const compressing = require('compressing');
 const moment = require('moment');
 const axios = require('axios');
-const updateNotifier = require('update-notifier');
 
-const pkg = require('../package.json');
-
-// const notifier = updateNotifier({pkg,updateCheckInterval: 1000 * 1 * 0 * 0 });
-// notifier.notify();
-// console.log(notifier.update);
 // const CONFIG = require("./deploy.conf");
 
 const SSH = new NodeSSH();
@@ -235,10 +229,6 @@ async function initInquirer(conf) {
 }
 
 const run = (conf, path) => {
-  updateNotifier({
-    pkg,
-    updateCheckInterval: 0,
-  }).notify();
   workPath = path;
   initInquirer(conf);
 };
