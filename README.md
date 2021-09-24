@@ -17,7 +17,7 @@ const CONFIG = {
 	robotDesc:'ci上传代码成功提示\n', // 钉钉提示机器人发的消息
 	webHookUrl:
 		'https://oapi.dingtalk.com/robot/send?access_token=XXXXX', // 钉钉机器人地址具体参考钉钉文档
-	atMobiles: [18668038687], // 机器人艾特的人 
+	atMobiles: [186680XXXXX], // 机器人艾特的人 
   servers: [
     {
       publicPath: "dist", // 项目打包之后的文件夹名称，一般都是dist文件夹，如果你的项目打包成别的文件夹名称，填写打包之后文件夹名称即可
@@ -49,7 +49,8 @@ run(CONFIG, __dirname);
 ```json
 {
     "scripts": {
-    "deploy": "node ./deploy.js"
+    "deploy": "node ./deploy.js --build", // 需要打包之后部署
+    "deploy2":"node ./deploy.js" // 不打包直接部署
   },
 }
 ```
