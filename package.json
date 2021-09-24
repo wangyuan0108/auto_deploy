@@ -1,6 +1,6 @@
 {
   "name": "deploy-auto",
-  "version": "1.0.24",
+  "version": "1.0.26",
   "description": "一个自动化部署的脚本",
   "main": "./dist/lib.js",
   "files": [

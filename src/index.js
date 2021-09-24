@@ -23,6 +23,8 @@ const SSH = new NodeSSH();
 let config;
 let workPath;
 let webHookUrl;
+let robotTitle;
+let robotDesc;
 let atMobiles = [];
 const build = argv.build || false;
 const defaultLog = log =>
@@ -168,8 +170,8 @@ async function sendMsg() {
     await axios.post(webHookUrl, {
       msgtype: 'markdown',
       markdown: {
-        title: '部署成功',
-        text: '## ci上传代码已成功\n #### 最新上传环境:\n' + config.name,
+        title: robotTitle,
+        text: robotDesc + config.name,
       },
       at: {
         atMobiles,
@@ -221,6 +223,8 @@ async function initInquirer(conf) {
     },
   ]);
   webHookUrl = conf.webHookUrl || '';
+  robotTitle = conf.robotTitle || '机器人';
+  robotDesc = conf.robotDesc || 'ci上传代码成功'
   atMobiles = conf.atMobiles || [];
   config = conf.servers.find(server => data.env === server.name);
   if (config) {
