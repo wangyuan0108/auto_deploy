@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-18 11:48:07
+ * @LastEditTime: 2021-09-24 14:01:15
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -171,7 +171,21 @@ async function sendMsg() {
       msgtype: 'markdown',
       markdown: {
         title: robotTitle,
-        text: robotDesc + config.name,
+        text:
+          '### 上传代码部署提示' +
+          '当前上传环境' +
+          config.name +
+          '\n' +
+          '服务器地址' +
+          config.host +
+          '\n' +
+          '部署目录路径' +
+          config.path +
+          '\n' +
+          '描述：' +
+          robotDesc +
+          '\n' +
+          (atMobiles.length > 0 ? atMobiles.join('@') : ''),
       },
       at: {
         atMobiles,
@@ -224,7 +238,7 @@ async function initInquirer(conf) {
   ]);
   webHookUrl = conf.webHookUrl || '';
   robotTitle = conf.robotTitle || '机器人';
-  robotDesc = conf.robotDesc || 'ci上传代码成功'
+  robotDesc = conf.robotDesc || 'ci上传代码成功';
   atMobiles = conf.atMobiles || [];
   config = conf.servers.find(server => data.env === server.name);
   if (config) {
