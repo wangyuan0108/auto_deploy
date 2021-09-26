@@ -1,7 +1,7 @@
 /*
  * @Author: wangyuan
  * @Date: 2021-05-10 15:02:46
- * @LastEditTime: 2021-09-24 14:01:15
+ * @LastEditTime: 2021-09-24 14:35:36
  * @LastEditors: wangyuan
  * @Description:
  */
@@ -172,20 +172,20 @@ async function sendMsg() {
       markdown: {
         title: robotTitle,
         text:
-          '### 上传代码部署提示' +
-          '当前上传环境' +
+          '## 上传代码部署提示\n ' +
+          '#### 当前上传环境:' +
           config.name +
-          '\n' +
-          '服务器地址' +
+          '\n ' +
+          '#### 服务器地址:' +
           config.host +
-          '\n' +
-          '部署目录路径' +
+          '\n ' +
+          '#### 部署目录路径:' +
           config.path +
-          '\n' +
-          '描述：' +
+          '\n ' +
+          '#### 描述：' +
           robotDesc +
-          '\n' +
-          (atMobiles.length > 0 ? atMobiles.join('@') : ''),
+          '\n ' +
+          (atMobiles.length > 0 ? '@'+atMobiles.join('@') : ''),
       },
       at: {
         atMobiles,
