@@ -225,22 +225,29 @@ async function inputPwd() {
 }
 
 async function initInquirer(conf) {
-  const data = await inquirer.prompt([
-    {
-      type: 'list',
-      message: '请选择发布环境',
-      name: 'env',
-      choices: conf.servers.map(sever => ({
-        name: sever.name,
-        value: sever.name,
-      })),
-    },
-  ]);
-  webHookUrl = conf.webHookUrl || '';
-  robotTitle = conf.robotTitle || '机器人';
-  robotDesc = conf.robotDesc || 'ci上传代码成功';
-  atMobiles = conf.atMobiles || [];
-  config = conf.servers.find(server => data.env === server.name);
+  let inconf = conf
+  if (inconf.length === 1) {
+    inconf = inconf[0]
+  }else {
+    const data = await inquirer.prompt([
+      {
+        type: 'list',
+        message: '请选择发布环境',
+        name: 'env',
+        choices: conf.servers.map(sever => ({
+          name: sever.name,
+          value: sever.name,
+        })),
+      },
+    ]);
+  config = inconf.servers.find(server => data.env === server.name);
+
+  }
+
+  webHookUrl = inconf.webHookUrl || '';
+  robotTitle = inconf.robotTitle || '机器人';
+  robotDesc = inconf.robotDesc || 'ci上传代码成功';
+  atMobiles = inconf.atMobiles || [];
   if (config) {
     if (!config.password) {
       config.password = await inputPwd();
