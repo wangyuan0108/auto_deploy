@@ -225,9 +225,8 @@ async function inputPwd() {
 }
 
 async function initInquirer(conf) {
-  let inconf = conf
-  if (inconf.length === 1) {
-    inconf = inconf[0]
+  if (conf.servers.length === 1) {
+    config = conf.servers[0]
   }else {
     const data = await inquirer.prompt([
       {
@@ -240,14 +239,14 @@ async function initInquirer(conf) {
         })),
       },
     ]);
-  config = inconf.servers.find(server => data.env === server.name);
+  config = conf.servers.find(server => data.env === server.name);
 
   }
 
-  webHookUrl = inconf.webHookUrl || '';
-  robotTitle = inconf.robotTitle || '机器人';
-  robotDesc = inconf.robotDesc || 'ci上传代码成功';
-  atMobiles = inconf.atMobiles || [];
+  webHookUrl = conf.webHookUrl || '';
+  robotTitle = conf.robotTitle || '机器人';
+  robotDesc = conf.robotDesc || 'ci上传代码成功';
+  atMobiles = conf.atMobiles || [];
   if (config) {
     if (!config.password) {
       config.password = await inputPwd();
